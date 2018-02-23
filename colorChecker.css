@@ -1,5 +1,8 @@
 body {
   background-color: #232323;
+  color: white;
+  font-family: 'Courier New', 'Courier', 'monospace';
+  text-align: center;
 }
 .square {
   width: 30%;
@@ -9,6 +12,9 @@ body {
   margin: 1.66%;
 }
 #container {
-  margin: auto;
+  margin: 0 auto;
   max-width: 700px;
 }
+ span {
+   color: yellowgreen;
+ }
