@@ -53,25 +53,7 @@ function reset() {
 //Select the refresh button for new game, add event listener
 var refreshButton = document.getElementById('refresh');
 refreshButton.addEventListener('click', function(){
-  // reset heading h1 and h3
-  h1.style.backgroundColor = 'steelblue';
-  h3.style.backgroundColor = 'steelblue';
-  // reset the button text
-  this.textContent = 'New Colors🌋'
-  // reset the span message
-  message.textContent = '';
-  // generate all new colors
-  colors = generateRandomColor(numSquares);
-  // pick a new goal color
-  goalSquare = pickColor();
-  // change the title to show the new goal 
-  colorDisplay.textContent = goalSquare;
-  // change the color of the user pick squares
-  for (var i = 0; i < squares.length; i++) {
-    // initial colors on the squares
-    squares[i].style.backgroundColor = colors[i];
-
-  }
+  reset();
 });
 
 // style the sqaures
