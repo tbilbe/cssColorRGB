@@ -2,19 +2,75 @@ body {
   background-color: #232323;
   color: white;
   font-family: 'Courier New', 'Courier', 'monospace';
+  margin: 0;
+}
+.title-header {
   text-align: center;
+  background-color: steelblue;
+  margin: 0;
+}
+h1 {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+h3 {
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: normal;
 }
 .square {
   width: 30%;
   padding-bottom: 30%;
-  background-color: greenyellow;
+  /* background-color: greenyellow; */
   float: left;
   margin: 1.66%;
+  border-radius: 20px;
+  transition: background 0.4s;
+  -webkit-transition:  background 0.4s;
+  -moz-transition:  background 0.4s;
 }
 #container {
-  margin: 0 auto;
+  margin: 20px auto;
   max-width: 700px;
 }
- span {
-   color: yellowgreen;
+
+ .stripe {
+   background-color: whitesmoke;
+   height: 30px;
+   text-align: center;
+   color: #220a0a;
+ }
+ button {
+   background-color: whitesmoke;
+   font-weight: 800;
+   color: steelblue;
+   height: 100%;
+   border: none;
+   font-size: inherit;
+   letter-spacing: 1px;
+   text-transform: uppercase;
+   transition: all 0.4s;
+   -webkit-transition: all 0.4s;
+   -moz-transition: all 0.4s;
+ }
+#message {
+  display: inline-block;
+  width: 20%;
+}
+ button:focus {
+   outline:0;
+  }
+
+ .selected {
+   background-color: tomato;
+   color: whitesmoke;
+ }
+ #colorDisplay {
+   font-weight: 600;
+   font-size: 200%;
+ }
+ button:hover {
+   background-color: steelblue;
+   color: whitesmoke;
  }

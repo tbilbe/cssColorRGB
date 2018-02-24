@@ -8,12 +8,17 @@
   <link rel="stylesheet" href="colorChecker.css" type="text/css">
 </head>
 <body>
-  <h1>Welcome to the Color Guessing Game</h1>
-  <h3>Pick the square that represents, <span id="colorDisplay"></span></h3>
-
-  <div>
-    <span id="message"></span>
+  <div class="title-header">
+    <h1>Welcome to the Color Guessing Game</h1>
+    <h3>Pick the square that represents:<br><span id="colorDisplay"></span></h3>
   </div>
+  <div class="stripe">
+    <button id="refresh">New Colors</button>
+    <span id="message"></span>
+    <button class="mode">Easy</button>
+    <button class="mode selected">Hard</button>
+  </div>
+
   <div id="container">
     <div class="square"></div>
     <div class="square"></div>
