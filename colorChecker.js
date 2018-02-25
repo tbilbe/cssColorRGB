@@ -22,6 +22,13 @@ init();
 
 function init() {
   //loop through btns 
+  setupModeBtns();
+  // style the sqaures
+  setupSquares();
+  reset();
+}
+
+function setupModeBtns() {
   for(var i = 0; i < modeBtns.length; i++) {
     modeBtns[i].addEventListener('click', function(){
       modeBtns[0].classList.remove('selected');
@@ -32,7 +39,9 @@ function init() {
       reset();
     });
   }
-  // style the sqaures
+}
+//styling the squares
+function setupSquares() {
   for (var i = 0; i < squares.length; i++) {
     // add the click listeners to the squares
     squares[i].addEventListener('click', function(){
@@ -52,7 +61,6 @@ function init() {
         }
     });
   }
-  reset();
 }
 
 function reset() {
