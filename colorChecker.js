@@ -1,27 +1,58 @@
 var numSquares = 6; // mode in game easy = 3, hard = 6 todo ultra = 9
-var colors = generateRandomColor(numSquares);
+var colors = [];
+var goalSquare;
+//get html elements
 var squares = document.querySelectorAll('.square');
 var message = document.getElementById('message');
 var h1 = document.querySelector('h1');
 var h3 = document.querySelector('h3');
-// Winning Color Square
-var goalSquare = pickColor();
 // update the HTML content to show the picked color from array and inject into span
 var colorDisplay = document.getElementById('colorDisplay');
 colorDisplay.textContent = goalSquare;
-
 // buttons for hard and easy mode select them
 var modeBtns = document.querySelectorAll('.mode');
-//loop through btns 
-for(var i = 0; i < modeBtns.length; i++) {
-  modeBtns[i].addEventListener('click', function(){
-    modeBtns[0].classList.remove('selected');
-    modeBtns[1].classList.remove('selected');
-    this.classList.add('selected');
-    //if easy clicked set numSquares and vice versa - ternary operator!
-    this.textContent === 'Easy' ? numSquares = 3 : numSquares = 6;
-    reset();
-  });
+
+//Select the refresh button for new game, add event listener
+var refreshButton = document.getElementById('refresh');
+refreshButton.addEventListener('click', function(){
+  reset();
+});
+
+init();
+
+function init() {
+  //loop through btns 
+  for(var i = 0; i < modeBtns.length; i++) {
+    modeBtns[i].addEventListener('click', function(){
+      modeBtns[0].classList.remove('selected');
+      modeBtns[1].classList.remove('selected');
+      this.classList.add('selected');
+      //if easy clicked set numSquares and vice versa - ternary operator!
+      this.textContent === 'Easy' ? numSquares = 3 : numSquares = 6;
+      reset();
+    });
+  }
+  // style the sqaures
+  for (var i = 0; i < squares.length; i++) {
+    // add the click listeners to the squares
+    squares[i].addEventListener('click', function(){
+      // get the color of the clicked square
+      var userPick = this.style.backgroundColor;
+      // compare this with the goal square
+      if(userPick === goalSquare) {
+        message.textContent = 'Correct - You clever MOFO!';
+        refreshButton.textContent = 'Play Again?';
+        colorChanger(goalSquare);
+        h1.style.backgroundColor = goalSquare;
+        h3.style.backgroundColor = goalSquare;
+      } else {
+        // if you pick the wrong color remvove the option from the user
+        this.style.backgroundColor = '#232323';
+        message.textContent = 'Try Again - Dummy!'
+        }
+    });
+  }
+  reset();
 }
 
 function reset() {
@@ -46,39 +77,9 @@ function reset() {
     } else {
       squares[i].style.display = 'none';
     }
-    // initial colors on the squares
   }
 }
 
-//Select the refresh button for new game, add event listener
-var refreshButton = document.getElementById('refresh');
-refreshButton.addEventListener('click', function(){
-  reset();
-});
-
-// style the sqaures
-for (var i = 0; i < squares.length; i++) {
-  // initial colors on the squares
-  squares[i].style.backgroundColor = colors[i];
-
-  // add the click listeners to the squares
-  squares[i].addEventListener('click', function(){
-    // get the color of the clicked square
-    var userPick = this.style.backgroundColor;
-    // compare this with the goal square
-    if(userPick === goalSquare) {
-      message.textContent = 'Correct - You clever MOFO!';
-      refreshButton.textContent = 'Play Again?';
-      colorChanger(goalSquare);
-      h1.style.backgroundColor = goalSquare;
-      h3.style.backgroundColor = goalSquare;
-    } else {
-      // if you pick the wrong color remvove the option from the user
-      this.style.backgroundColor = '#232323';
-      message.textContent = 'Try Again - Dummy!'
-    }
-  });
-}
 
 // num is the number of random colors to generate - 3, 6 or 9
 function generateRandomColor(num) {
